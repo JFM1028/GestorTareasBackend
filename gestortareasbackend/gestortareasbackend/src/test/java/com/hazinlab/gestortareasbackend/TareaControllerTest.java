@@ -59,13 +59,14 @@ public class TareaControllerTest {
 
     verify(tareaService, times(1)).eliminarTarea(tarea.getId());
   }
-  //@Test
-  //public void testMarcarCompletada() {
-  // when(tareaService.marcarCompletada(tarea.getId())).thenReturn(tarea);
 
-  //Tarea tareaCompletada = tareaController.marcarCompletada(tarea.getId());
+  @Test
+  public void testMarcarCompletada() {
+    when(tareaService.marcarCompletada(tarea.getId())).thenReturn(tarea);
 
-  //assertTrue(tareaCompletada.isCompletada());
-  //verify(tareaService, times(1)).marcarCompletada(tarea.getId());
-  //}
+    Tarea tareaCompletada = tareaController.marcarCompletada(tarea.getId());
+
+    assertTrue(tareaCompletada.isCompletada());
+    verify(tareaService, times(1)).marcarCompletada(tarea.getId());
+  }
 }
