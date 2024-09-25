@@ -9,3 +9,5 @@ ahora descargamos postman para hacer el tema de solicitudes, y realizamos varias
 ademas hacemos una de completar una tarea en especifico
 http://localhost:8080/api/tareas/66ef52b41758390cb5784aba/completar
 
+--Se cubre el 87% en cuanto a pruebas
+![alt text](image-4.png)

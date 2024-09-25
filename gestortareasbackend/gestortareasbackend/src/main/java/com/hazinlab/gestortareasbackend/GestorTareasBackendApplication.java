@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class GestorTareasBackendApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(GestorTareasBackendApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(GestorTareasBackendApplication.class, args);
+  }
 }

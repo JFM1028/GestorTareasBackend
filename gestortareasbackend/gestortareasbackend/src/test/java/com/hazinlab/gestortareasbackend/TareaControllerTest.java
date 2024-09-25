@@ -1,6 +1,7 @@
 package com.hazinlab.gestortareasbackend;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 import com.hazinlab.gestortareasbackend.controller.TareaController;
@@ -62,11 +63,20 @@ public class TareaControllerTest {
 
   @Test
   public void testMarcarCompletada() {
+    // se busca donde esta la tarea competada
+    tarea.setCompletada(true); // Marca la tarea como completada
     when(tareaService.marcarCompletada(tarea.getId())).thenReturn(tarea);
 
+    // Ejecuta el método del controlador
     Tarea tareaCompletada = tareaController.marcarCompletada(tarea.getId());
 
-    assertTrue(tareaCompletada.isCompletada());
+    // Aqui uno se asegura que la tarea está marcada como completada
+    assertTrue(
+      tareaCompletada.isCompletada(),
+      "La tarea debería estar marcada como completada"
+    );
+
+    // Verifica que el método en el servicio fue llamado una vez
     verify(tareaService, times(1)).marcarCompletada(tarea.getId());
   }
 }
