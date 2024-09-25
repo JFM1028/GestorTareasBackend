@@ -18,65 +18,75 @@ import org.mockito.MockitoAnnotations;
 public class TareaControllerTest {
 
   @Mock
-  private TareaService tareaService;
+  private TareaService tareaService; // Se crea un mock de TareaService.
 
   @InjectMocks
-  private TareaController tareaController;
+  private TareaController tareaController; // Se inyecta el mock en TareaController.
 
-  private Tarea tarea;
+  private Tarea tarea; // Se define un objeto Tarea para usar en las pruebas.
 
   @BeforeEach
   public void setUp() {
-    MockitoAnnotations.openMocks(this);
-    tarea = new Tarea("Tarea de prueba", false);
-    tarea.setId("1");
+    MockitoAnnotations.openMocks(this); // Inicializa los mocks.
+    tarea = new Tarea("Tarea de prueba", false); // Crea una nueva tarea de prueba.
+    tarea.setId("1"); // Establece un ID para la tarea.
   }
 
   @Test
   public void testObtenerTareas() {
+    // Simula que el servicio devuelve una lista con la tarea de prueba.
     when(tareaService.obtenerTareas()).thenReturn(Arrays.asList(tarea));
 
+    // Llama al método del controlador que se está probando.
     List<Tarea> tareas = tareaController.obtenerTareas();
 
-    assertEquals(1, tareas.size());
-    assertEquals("Tarea de prueba", tareas.get(0).getDescripcion());
+    // Verifica que la lista devuelta tenga el tamaño correcto y la descripción esperada.
+    assertEquals(1, tareas.size()); // Comprueba que hay 1 tarea.
+    assertEquals("Tarea de prueba", tareas.get(0).getDescripcion()); // Comprueba la descripción.
   }
 
   @Test
   public void testAgregarTarea() {
+    // Simula que el servicio agrega una tarea y devuelve la tarea de prueba.
     when(tareaService.agregarTarea(any(Tarea.class))).thenReturn(tarea);
 
+    // Llama al método del controlador que se está probando.
     Tarea nuevaTarea = tareaController.agregarTarea(tarea);
 
-    assertNotNull(nuevaTarea);
-    assertEquals("Tarea de prueba", nuevaTarea.getDescripcion());
+    // Verifica que la tarea agregada no sea nula y que tenga la descripción correcta.
+    assertNotNull(nuevaTarea); // Asegura que la nueva tarea no es nula.
+    assertEquals("Tarea de prueba", nuevaTarea.getDescripcion()); // Comprueba la descripción.
   }
 
   @Test
   public void testEliminarTarea() {
+    // Simula que el servicio elimina una tarea sin lanzar excepciones.
     doNothing().when(tareaService).eliminarTarea(tarea.getId());
 
+    // Llama al método del controlador que se está probando.
     tareaController.eliminarTarea(tarea.getId());
 
+    // Verifica que el método del servicio fue llamado exactamente una vez.
     verify(tareaService, times(1)).eliminarTarea(tarea.getId());
   }
 
   @Test
   public void testMarcarCompletada() {
-    // se busca donde esta la tarea competada
-    tarea.setCompletada(true); // Marca la tarea como completada
+    // Marca la tarea como completada.
+    tarea.setCompletada(true);
+    // Simula que el servicio devuelve la tarea completada.
     when(tareaService.marcarCompletada(tarea.getId())).thenReturn(tarea);
 
-    // Ejecuta el método del controlador
+    // Llama al método del controlador que se está probando.
     Tarea tareaCompletada = tareaController.marcarCompletada(tarea.getId());
 
-    // Aqui uno se asegura que la tarea está marcada como completada
+    // Verifica que la tarea esté marcada como completada.
     assertTrue(
       tareaCompletada.isCompletada(),
       "La tarea debería estar marcada como completada"
     );
 
-    // Verifica que el método en el servicio fue llamado una vez
+    // Verifica que el método del servicio fue llamado exactamente una vez.
     verify(tareaService, times(1)).marcarCompletada(tarea.getId());
   }
 }
