@@ -36,6 +36,14 @@ public class TareaService {
   }
 
   /**
+   * 
+   * @param id
+   */
+  public void actualizarTarea(String id, String nombre, String descripcion) {
+    Tarea tarea = tareaRepository.findById.orElseThrow();
+    tarea.actualizarTarea(nombre, tarea);
+  }
+  /**
    * Elimina una tarea de la base de datos por su ID.
    *
    * @param id El ID de la tarea a eliminar.

@@ -13,7 +13,7 @@ public class Tarea {
 
   @Id
   private String id;
-
+  private String nombre;
   private String descripcion;
   private boolean completada;
 
@@ -31,6 +31,11 @@ public class Tarea {
   public Tarea(String descripcion, boolean completada) {
     this.descripcion = descripcion;
     this.completada = completada;
+  }
+
+  public void actualizarTarea(String nombre, String descripcion){
+    this.nombre = nombre;
+    this.descripcion = descripcion;
   }
 
   /**

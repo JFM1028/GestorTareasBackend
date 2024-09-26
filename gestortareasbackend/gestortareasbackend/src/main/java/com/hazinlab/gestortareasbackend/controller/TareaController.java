@@ -44,6 +44,10 @@ public class TareaController {
   public Tarea agregarTarea(@RequestBody Tarea tarea) {
     return tareaService.agregarTarea(tarea);
   }
+  @PutMapping("/{id}")
+  public Tarea actualizarTarea(@PathVariable String id, @RequestBody Tarea tarea) {
+      return tareaService.actualizarTarea(id, tarea);
+  }
 
   /**
    * Marca una tarea como completada.
