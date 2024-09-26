@@ -28,7 +28,7 @@ public class TareaControllerTest {
   @BeforeEach
   public void setUp() {
     MockitoAnnotations.openMocks(this); // Inicializa los mocks.
-    tarea = new Tarea("Tarea de prueba", false); // Crea una nueva tarea de prueba.
+    tarea = new Tarea("tarea prueba", "Tarea de prueba", false); // Crea una nueva tarea de prueba.
     tarea.setId("1"); // Establece un ID para la tarea.
   }
 

@@ -36,7 +36,7 @@ public class TareaService {
   }
 
   /**
-   * 
+   *
    * @param id
    */
   public Tarea actualizarTarea(String id, String nombre, String descripcion) {
@@ -44,6 +44,7 @@ public class TareaService {
     tarea.actualizarTarea(nombre, descripcion);
     return tareaRepository.save(tarea);
   }
+
   /**
    * Elimina una tarea de la base de datos por su ID.
    *

@@ -13,6 +13,7 @@ public class Tarea {
 
   @Id
   private String id;
+
   private String nombre;
   private String descripcion;
   private boolean completada;
@@ -28,13 +29,13 @@ public class Tarea {
    * @param descripcion la descripción de la tarea.
    * @param completada el estado de la tarea (completada o no).
    */
-  public Tarea(String nombre,String descripcion, boolean completada) {
+  public Tarea(String nombre, String descripcion, boolean completada) {
     this.nombre = nombre;
     this.descripcion = descripcion;
-    this.completada = completada;    
+    this.completada = completada;
   }
 
-  public void actualizarTarea(String nombre, String descripcion){
+  public void actualizarTarea(String nombre, String descripcion) {
     this.nombre = nombre;
     this.descripcion = descripcion;
   }
@@ -64,6 +65,15 @@ public class Tarea {
    */
   public String getDescripcion() {
     return descripcion;
+  }
+
+  /**
+   * Obtiene el nombre de la tarea.
+   *
+   * @return el nombre de la tarea.
+   */
+  public String getNombre() {
+    return nombre;
   }
 
   /**
