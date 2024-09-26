@@ -44,9 +44,10 @@ public class TareaController {
   public Tarea agregarTarea(@RequestBody Tarea tarea) {
     return tareaService.agregarTarea(tarea);
   }
-  @PutMapping("/{id}")
-  public Tarea actualizarTarea(@PathVariable String id, @RequestBody Tarea tarea) {
-      return tareaService.actualizarTarea(id, tarea);
+  
+  @PutMapping("/{id}/actualizar")
+  public Tarea actualizarTarea(@PathVariable String id, @RequestBody String nombre, @RequestBody String drescripcion) {
+      return tareaService.actualizarTarea(id, nombre, drescripcion);
   }
 
   /**

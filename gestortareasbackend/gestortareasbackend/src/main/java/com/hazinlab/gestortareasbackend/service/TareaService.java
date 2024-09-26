@@ -39,9 +39,10 @@ public class TareaService {
    * 
    * @param id
    */
-  public void actualizarTarea(String id, String nombre, String descripcion) {
-    Tarea tarea = tareaRepository.findById.orElseThrow();
-    tarea.actualizarTarea(nombre, tarea);
+  public Tarea actualizarTarea(String id, String nombre, String descripcion) {
+    Tarea tarea = tareaRepository.findById(id).orElseThrow();
+    tarea.actualizarTarea(nombre, descripcion);
+    return tareaRepository.save(tarea);
   }
   /**
    * Elimina una tarea de la base de datos por su ID.
