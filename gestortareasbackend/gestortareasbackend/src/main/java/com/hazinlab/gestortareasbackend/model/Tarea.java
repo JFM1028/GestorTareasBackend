@@ -77,6 +77,15 @@ public class Tarea {
   }
 
   /**
+   * Establece el nombre de la tarea.
+   *
+   * @param nombre el nuevo nombre de la tarea.
+   */
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+
+  /**
    * Establece la descripción de la tarea.
    *
    * @param descripcion la nueva descripción de la tarea.

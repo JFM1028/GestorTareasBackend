@@ -32,6 +32,10 @@ public class TareaService {
    * @return La tarea agregada, incluyendo su ID asignado.
    */
   public Tarea agregarTarea(Tarea tarea) {
+    System.out.println(
+      "Tarea recibida: " + tarea.getNombre() + ", " + tarea.getDescripcion()
+    ); // Logging para depuración
+
     return tareaRepository.save(tarea);
   }
 

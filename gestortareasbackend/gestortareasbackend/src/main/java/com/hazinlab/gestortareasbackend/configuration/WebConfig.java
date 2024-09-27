@@ -10,7 +10,11 @@ public class WebConfig implements WebMvcConfigurer {
 
   @Override
   public void addCorsMappings(@NonNull CorsRegistry registry) {
-    // No se permiten orígenes
-    registry.addMapping("/**").allowedOrigins();
+    // Permitir solicitudes desde cualquier origen (incluyendo file://)
+    registry
+      .addMapping("/**")
+      .allowedOrigins("*") // Permitir todos los orígenes
+      .allowedMethods("GET", "POST", "PUT", "DELETE")
+      .allowedHeaders("*");
   }
 }
