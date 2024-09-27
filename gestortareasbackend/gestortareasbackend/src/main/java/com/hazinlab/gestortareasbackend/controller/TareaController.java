@@ -1,6 +1,7 @@
 package com.hazinlab.gestortareasbackend.controller;
 
 import com.hazinlab.gestortareasbackend.model.Tarea;
+import com.hazinlab.gestortareasbackend.model.TareaDTO;
 import com.hazinlab.gestortareasbackend.service.TareaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,10 +45,17 @@ public class TareaController {
   public Tarea agregarTarea(@RequestBody Tarea tarea) {
     return tareaService.agregarTarea(tarea);
   }
-  
+
   @PutMapping("/{id}/actualizar")
-  public Tarea actualizarTarea(@PathVariable String id, @RequestBody String nombre, @RequestBody String drescripcion) {
-      return tareaService.actualizarTarea(id, nombre, drescripcion);
+  public Tarea actualizarTarea(
+    @PathVariable String id,
+    @RequestBody TareaDTO tareaDTO
+  ) {
+    return tareaService.actualizarTarea(
+      id,
+      tareaDTO.getNombre(),
+      tareaDTO.getDescripcion()
+    );
   }
 
   /**

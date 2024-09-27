@@ -44,6 +44,9 @@ public class TareaService {
    * @param id
    */
   public Tarea actualizarTarea(String id, String nombre, String descripcion) {
+    System.err.println(
+      "Tarea recibida: " + id + ", " + nombre + ", " + descripcion
+    );
     Tarea tarea = tareaRepository.findById(id).orElseThrow();
     tarea.actualizarTarea(nombre, descripcion);
     return tareaRepository.save(tarea);
@@ -66,6 +69,7 @@ public class TareaService {
    * @throws NoSuchElementException Si no se encuentra la tarea con el ID especificado.
    */
   public Tarea marcarCompletada(String id) {
+    System.err.println("Tarea recibida: " + id);
     Tarea tarea = tareaRepository.findById(id).orElseThrow();
     tarea.setCompletada(true);
     return tareaRepository.save(tarea);
